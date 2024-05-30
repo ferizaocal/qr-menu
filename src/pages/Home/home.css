@@ -1,0 +1,17 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+.page {
+  background-color: #ff2e16;
+  box-shadow: 0 0 10px #0003;
+  height: 100%;
+  position: absolute;
+  width: 450px;
+  box-sizing: content-box;
+}
