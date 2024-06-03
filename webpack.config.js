@@ -16,6 +16,11 @@ module.exports = {
     admin: "./src/admin.js",
     client: "./src/client.js",
   },
+  resolve: {
+    alias: {
+      "@locales": path.resolve(__dirname, "src/locales"),
+    },
+  },
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),

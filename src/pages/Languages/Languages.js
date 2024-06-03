@@ -7,6 +7,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import AddLanguage from "./AddLanguage";
 import DeleteLanguage from "./DeleteLanguage";
 import Loading from "../../components/Loading";
+import { useTranslation } from "react-i18next";
 
 export default function Languages({ setPage, setSelectedLanguage }) {
   const [open, setOpen] = React.useState(false);
@@ -14,6 +15,7 @@ export default function Languages({ setPage, setSelectedLanguage }) {
   const [languages, setLanguages] = React.useState([]);
   const [selectedIndex, setSelectedIndex] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
+  const { t } = useTranslation();
   const handleOpenAddDialog = () => {
     setOpen(true);
   };
@@ -105,7 +107,7 @@ export default function Languages({ setPage, setSelectedLanguage }) {
                   handleOpenDeleteDialog();
                 }}
               >
-                Sil
+                {t("deleteButton")}
               </Button>
             </Grid>
           }
@@ -126,9 +128,7 @@ export default function Languages({ setPage, setSelectedLanguage }) {
             display="flex"
             marginTop="1px"
           >
-            <Typography>
-              Mevcut dil bulunmamaktadır.Lütfen dil ekleyiniz.
-            </Typography>
+            <Typography>{t("notFoundLanguageText")}</Typography>
           </Box>
         ) : (
           languages.map((value, index) => (
@@ -146,7 +146,7 @@ export default function Languages({ setPage, setSelectedLanguage }) {
             sx={{ marginTop: 3 }}
             onClick={handleOpenAddDialog}
           >
-            Yeni Dil Ekle
+            {t("addNewLanguageButton")}
           </Button>
         </Box>
         {open && (

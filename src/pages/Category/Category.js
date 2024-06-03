@@ -4,7 +4,11 @@ import {
   Card,
   CardActions,
   CardMedia,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
+  Select,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -15,12 +19,15 @@ import EditCategory from "./EditCategory";
 import DeleteCategory from "./DeleteCategory";
 import { pages } from "../App";
 import Loading from "../../components/Loading";
+import SelectLanguage from "../../components/SelectLanguage/SelectLanguage";
+import { useTranslation } from "react-i18next";
 
 export default function Category({
   setPage,
   setSelectedCategory,
   selectedBranch,
   selectedLanguage,
+  setSelectedLanguage,
 }) {
   const [addOpenDialog, setAddOpenDialog] = useState(false);
   const [editOpenDialog, setEditOpenDialog] = useState(false);
@@ -28,6 +35,7 @@ export default function Category({
   const [categories, setCategories] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   const handleOpenAddDialog = () => {
     setAddOpenDialog(true);
@@ -58,8 +66,8 @@ export default function Category({
   }, [selectedLanguage.id]);
 
   const loadData = async () => {
-    setLoading(true);
-    if (selectedLanguage) {
+    if (selectedLanguage && getBranch) {
+      setLoading(true);
       fetch(
         `/wp-json/v1/getCategoriesByBranchIDAndLanguageID/${
           JSON.parse(getBranch)?.id
@@ -75,11 +83,13 @@ export default function Category({
         .finally(() => {
           setLoading(false);
         });
+    } else {
+      setPage(pages.Branch);
     }
   };
   const saveCategory = async (categoryName, categoryImage) => {
     const formData = new FormData();
-    formData.append("branchId", selectedBranch.id);
+    formData.append("branchId", JSON.parse(getBranch)?.id);
     formData.append("categoryName", categoryName);
     formData.append("categoryImage", categoryImage);
     formData.append("languageId", selectedLanguage?.id);
@@ -223,50 +233,55 @@ export default function Category({
     );
   };
   return (
-    <Loading loading={loading}>
+    <Loading>
       <Box component="div" sx={{ width: 450 }}>
-        {categories?.length === 0 ? (
-          <Box
-            textAlign={"center"}
-            alignItems="center"
-            justifyContent="center"
-            display="flex"
-            marginTop="1px"
-          >
-            <Typography>
-              Mevcut kategori bulunmamaktadır. Lütfen kategori ekleyiniz.
-            </Typography>
-          </Box>
-        ) : (
-          categories.map((value, index) => (
-            <Card
-              key={index}
-              variant="outlined"
-              sx={{
-                maxWidth: 600,
-                padding: 1,
-                background: "white",
-              }}
+        <SelectLanguage
+          selectedLanguage={selectedLanguage}
+          setSelectedLanguage={setSelectedLanguage}
+        />
+        <Loading loading={loading}>
+          {categories?.length === 0 ? (
+            <Box
+              textAlign={"center"}
+              alignItems="center"
+              justifyContent="center"
+              display="flex"
+              marginTop="1px"
             >
-              <CardActions disableSpacing>
-                <Box
-                  container
-                  flex={1}
-                  display={"flex"}
-                  justifyContent={"space-between"}
-                  alignItems={"center"}
-                  marginTop={"10px"}
-                >
-                  <CardItem index={index} item={value} />
-                </Box>
-              </CardActions>
-            </Card>
-          ))
-        )}
+              <Typography>{t("notFoundCategoryText")}</Typography>
+            </Box>
+          ) : (
+            categories?.map?.((value, index) => (
+              <Card
+                key={index}
+                variant="outlined"
+                sx={{
+                  maxWidth: 600,
+                  marginBottom: "10px",
+                  padding: 1,
+                  background: "white",
+                }}
+              >
+                <CardActions disableSpacing>
+                  <Box
+                    container
+                    flex={1}
+                    display={"flex"}
+                    justifyContent={"space-between"}
+                    alignItems={"center"}
+                    marginTop={"10px"}
+                  >
+                    <CardItem index={index} item={value} />
+                  </Box>
+                </CardActions>
+              </Card>
+            ))
+          )}
+        </Loading>
 
         <Box mt={2} display="flex" justifyContent="center" alignItems="center">
           <Button variant="contained" onClick={handleOpenAddDialog}>
-            Kategori Ekle
+            {t("addCategory")}
           </Button>
         </Box>
 

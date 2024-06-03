@@ -19,16 +19,18 @@ export default function TabMenu({ selectedMenu, setSelectedMenu, setOpen }) {
 
   const getBranch = localStorage.getItem("selectedBranch");
   useEffect(() => {
-    getLoadMenu();
     getLoadLanguages();
   }, []);
+  useEffect(() => {
+    getLoadMenu();
+  }, [selectedLanguage]);
 
   const getLoadMenu = () => {
-    if (getBranch) {
+    if (getBranch && selectedLanguage) {
       fetch(
         `/wp-json/v1/getCategoriesByBranchIDAndLanguageID/${
           JSON.parse(getBranch)?.id
-        }/${JSON.parse(getLanguage)?.id}`
+        }/${selectedLanguage?.id || JSON.parse(getLanguage)?.id}`
       )
         .then((res) => res.json())
         .then((res) => {
@@ -43,11 +45,16 @@ export default function TabMenu({ selectedMenu, setSelectedMenu, setOpen }) {
         .then((res) => res.json())
         .then((res) => {
           setLanguages(res.languages);
+          setSelectedLanguage(res.languages[0]);
         });
     }
   };
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);
+    localStorage.setItem(
+      "selectedLanguage",
+      JSON.stringify(event.target.value)
+    );
   };
 
   return (
@@ -96,7 +103,7 @@ export default function TabMenu({ selectedMenu, setSelectedMenu, setOpen }) {
               onChange={handleLanguageChange}
             >
               {languages.map((language) => (
-                <MenuItem key={language.id} value={language.id}>
+                <MenuItem key={language.id} value={language}>
                   {language.LanguageName}
                 </MenuItem>
               ))}
@@ -124,8 +131,9 @@ export default function TabMenu({ selectedMenu, setSelectedMenu, setOpen }) {
             sx={{
               marginRight: "5px",
               height: "50px",
-              color: "black",
+              color: selectedMenu?.id === menu?.id ? "#fff" : "black",
               borderRadius: "5px",
+              backgroundColor: selectedMenu?.id === menu?.id ? "red" : "white",
               border: "1px solid red !important",
               ":hover": {
                 cursor: "pointer",

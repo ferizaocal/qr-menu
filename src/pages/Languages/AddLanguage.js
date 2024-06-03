@@ -5,6 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function AddLanguage({
   open,
@@ -23,7 +24,7 @@ export default function AddLanguage({
       handleClickClose();
     }
   };
-
+  const { t } = useTranslation();
   const languages = ["Türkçe", "English", "Deutsch", "Español", "Français"];
 
   return (
@@ -36,12 +37,12 @@ export default function AddLanguage({
       >
         <DialogContent sx={{ width: 300 }}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Seçiniz</InputLabel>
+            <InputLabel id="demo-simple-select-label">{t("choose")}</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={language}
-              label="Ana Dil"
+              label={t("language")}
               onChange={handleChangeLanguage}
               sx={{ marginBottom: 2 }}
             >
@@ -64,9 +65,9 @@ export default function AddLanguage({
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClickClose}>İptal</Button>
+          <Button onClick={handleClickClose}>{t("cancel")}</Button>
           <Button onClick={handleAdd} autoFocus>
-            Kaydet
+            {t("save")}
           </Button>
         </DialogActions>
       </Dialog>

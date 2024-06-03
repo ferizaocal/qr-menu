@@ -1,11 +1,13 @@
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function DeleteCategory({
   open,
   handleClickClose,
   deleteCategory,
 }) {
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <Dialog
@@ -20,11 +22,11 @@ export default function DeleteCategory({
           alignItems="center"
           display="flex"
         >
-          {"Silmek İstediğinize Emin Misiniz?"}
+          {t("deleteMessage")}
         </DialogTitle>
 
         <DialogActions>
-          <Button onClick={handleClickClose}>Vazgeç</Button>
+          <Button onClick={handleClickClose}>{t("givUp")}</Button>
           <Button
             onClick={() => {
               deleteCategory();
@@ -32,7 +34,7 @@ export default function DeleteCategory({
             }}
             autoFocus
           >
-            Tamam
+            {t("ok")}
           </Button>
         </DialogActions>
       </Dialog>

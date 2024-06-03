@@ -12,11 +12,13 @@ import {
   TextField,
   Box,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function AddBranch({ open, handleClickClose, saveBranch }) {
   const [branchName, setBranchName] = React.useState("");
   const [currencyUnit, setCurrencyUnit] = React.useState("");
   const [language, setLanguage] = React.useState("");
+  const { t } = useTranslation();
 
   const handleChangeLanguage = (event) => {
     setLanguage(event.target.value);
@@ -44,7 +46,7 @@ export default function AddBranch({ open, handleClickClose, saveBranch }) {
           alignItems="center"
           display="flex"
         >
-          {"Yeni Şube Ekle"}
+          {t("addNewBranchButton")}
         </DialogTitle>
         <DialogContent>
           <Box sx={{ marginTop: 2, marginBottom: 2 }}>
@@ -52,7 +54,7 @@ export default function AddBranch({ open, handleClickClose, saveBranch }) {
               value={branchName}
               onChange={(e) => setBranchName(e.target.value)}
               id="outlined-basic"
-              label="Şube Adı"
+              label={t("branchName")}
               variant="outlined"
               fullWidth
             />
@@ -64,7 +66,7 @@ export default function AddBranch({ open, handleClickClose, saveBranch }) {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={currencyUnit}
-              label="Para Birimi"
+              label={t("currencyUnit")}
               onChange={handleChangeCurencyUnit}
               sx={{ marginBottom: 2 }}
             >
@@ -79,7 +81,7 @@ export default function AddBranch({ open, handleClickClose, saveBranch }) {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={language}
-              label="Ana Dil"
+              label={t("language")}
               onChange={handleChangeLanguage}
               sx={{ marginBottom: 2 }}
             >
@@ -92,7 +94,7 @@ export default function AddBranch({ open, handleClickClose, saveBranch }) {
         <DialogActions>
           <Button onClick={handleClickClose}>İptal</Button>
           <Button onClick={handleAdd} autoFocus>
-            Kaydet
+            {t("save")}
           </Button>
         </DialogActions>
       </Dialog>

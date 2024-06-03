@@ -20,6 +20,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteTicket from "./DeleteTicket";
 import EditTicket from "./EditTicket";
 import { Delete, Edit } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export default function Tickets({ setPage }) {
   const [addOpenDialog, setAddOpenDialog] = useState(false);
@@ -29,7 +30,7 @@ export default function Tickets({ setPage }) {
   const [loading, setLoading] = React.useState(true);
   const [selectedIndex, setSelectedIndex] = React.useState(null);
   const getBranch = localStorage.getItem("adminSelectedBranch");
-
+  const { t } = useTranslation();
   const handleOpenAddTicketDialog = () => {
     setAddOpenDialog(true);
   };
@@ -146,9 +147,7 @@ export default function Tickets({ setPage }) {
             display="flex"
             marginTop="1px"
           >
-            <Typography>
-              Mevcut etiket bulunmamaktadır. Lütfen etiket ekleyiniz.
-            </Typography>
+            <Typography>{t("notFoundTicketText")}</Typography>
           </Box>
         ) : (
           <Box>
@@ -159,8 +158,8 @@ export default function Tickets({ setPage }) {
               <Table size="small" aria-label="a dense table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Etiket Değeri</TableCell>
-                    <TableCell align="left">Etiket Adı</TableCell>
+                    <TableCell>{t("ticketValue")}</TableCell>
+                    <TableCell align="left">{t("ticketName")}</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -241,7 +240,7 @@ export default function Tickets({ setPage }) {
             variant="contained"
             onClick={handleOpenAddTicketDialog}
           >
-            Yeni Etiket Ekle
+            {t("addNewTicketButton")}
           </Button>
         </Box>
 

@@ -1,11 +1,13 @@
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function DeleteLanguage({
   open,
   handleClickClose,
   deleteLanguage,
 }) {
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <Dialog
@@ -20,11 +22,11 @@ export default function DeleteLanguage({
           alignItems="center"
           display="flex"
         >
-          {"Silmek İstediğinize Emin Misiniz?"}
+          {t("deleteMessage")}
         </DialogTitle>
 
         <DialogActions>
-          <Button onClick={handleClickClose}>Vazgeç</Button>
+          <Button onClick={handleClickClose}>{t("givUp")}</Button>
           <Button
             onClick={() => {
               deleteLanguage();
@@ -32,7 +34,7 @@ export default function DeleteLanguage({
             }}
             autoFocus
           >
-            Tamam
+            {t("ok")}
           </Button>
         </DialogActions>
       </Dialog>

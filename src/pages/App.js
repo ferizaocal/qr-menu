@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Category from "./Category/Category";
 import Branch from "./Branch/Branch";
 import { Box, Card, Grid, useMediaQuery } from "@mui/material";
@@ -24,12 +24,13 @@ export default function App({ user }) {
   const [drawerMenuOpen, setDrawerMenuOpen] = React.useState(
     isMobileDevice ? false : true
   );
-  const [page, setPage] = React.useState(pages.Branch);
+  const [page, setPage] = React.useState(pages.Category);
   const [selectedCategory, setSelectedCategory] = React.useState({});
   const [selectedBranch, setSelectedBranch] = React.useState({});
   const [selectedItem, setSelectedItem] = React.useState({});
   const [selectedLanguage, setSelectedLanguage] = React.useState({});
   const [selectedTicket, setSelectedTicket] = React.useState({});
+
   if (user === "admin") {
     return (
       <Box sx={{ width: "100%" }}>
@@ -83,6 +84,14 @@ export default function App({ user }) {
                 >
                   {page == pages.Category && (
                     <Category
+                      setSelectedLanguage={(e) => {
+                        console.log("setSelectedLanguage", e);
+                        setSelectedLanguage(e);
+                        localStorage.setItem(
+                          "adminSelectedLanguage",
+                          JSON.stringify(e)
+                        );
+                      }}
                       selectedBranch={selectedBranch}
                       selectedLanguage={selectedLanguage}
                       setSelectedCategory={setSelectedCategory}

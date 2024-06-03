@@ -1,7 +1,9 @@
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function DeleteTicket({ open, handleClickClose, deleteTicket }) {
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <Dialog
@@ -16,11 +18,11 @@ export default function DeleteTicket({ open, handleClickClose, deleteTicket }) {
           alignItems="center"
           display="flex"
         >
-          {"Silmek İstediğinize Emin Misiniz?"}
+          {t("deleteMessage")}
         </DialogTitle>
 
         <DialogActions>
-          <Button onClick={handleClickClose}>Vazgeç</Button>
+          <Button onClick={handleClickClose}>{t("givUp")}</Button>
           <Button
             onClick={() => {
               deleteTicket();
@@ -28,7 +30,7 @@ export default function DeleteTicket({ open, handleClickClose, deleteTicket }) {
             }}
             autoFocus
           >
-            Tamam
+            {t("ok")}
           </Button>
         </DialogActions>
       </Dialog>

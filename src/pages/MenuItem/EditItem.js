@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import React, { useEffect } from "react";
 import FileUploadTwoToneIcon from "@mui/icons-material/FileUploadTwoTone";
+import { useTranslation } from "react-i18next";
 export default function EditItem({
   open,
   handleClickClose,
@@ -40,7 +41,7 @@ export default function EditItem({
   const handleChangePrice = (event) => {
     setPrice(event.target.value);
   };
-
+  const { t } = useTranslation();
   const handleChangeImage = (event) => {
     const selectedFile = event.target.files[0];
     setImage(selectedFile);
@@ -73,7 +74,7 @@ export default function EditItem({
           alignItems="center"
           display="flex"
         >
-          {"Öge Düzenle"}
+          {t("editMenuItem")}
         </DialogTitle>
         <DialogContent>
           <Box
@@ -88,7 +89,7 @@ export default function EditItem({
               sx={{ marginBottom: 2 }}
               onChange={handleChangeImage}
             >
-              Fotoğraf Seç
+              {t("choosePhoto")}
               <input type="file" hidden />
             </Button>
             {imageUrl && (
@@ -105,7 +106,7 @@ export default function EditItem({
               value={name}
               onChange={handleChangeName}
               id="outlined-basic"
-              label="Öge Adı"
+              label={t("menuItemName")}
               variant="outlined"
               fullWidth
               sx={{ marginBottom: 2, marginTop: 2 }}
@@ -114,7 +115,7 @@ export default function EditItem({
               value={explanation}
               onChange={handleChangeExplanation}
               id="outlined-basic"
-              label="Öge Açıklaması"
+              label={t("explanation")}
               variant="outlined"
               fullWidth
               sx={{ marginBottom: 2 }}
@@ -123,7 +124,7 @@ export default function EditItem({
               value={price}
               onChange={handleChangePrice}
               id="outlined-basic"
-              label="Öge Fiyatı"
+              label={t("price")}
               variant="outlined"
               fullWidth
               sx={{ marginBottom: 2 }}
@@ -142,7 +143,7 @@ export default function EditItem({
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Etiket"
+                  label={t("ticket")}
                   placeholder="Etiket"
                   variant="outlined"
                 />
@@ -151,7 +152,7 @@ export default function EditItem({
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClickClose}>İptal</Button>
+          <Button onClick={handleClickClose}>{t("cancel")}</Button>
           <Button
             onClick={() => {
               editMenuItem(image, name, explanation, price, selectedTickets);
@@ -159,7 +160,7 @@ export default function EditItem({
             }}
             autoFocus
           >
-            Kaydet
+            {t("save")}
           </Button>
         </DialogActions>
       </Dialog>

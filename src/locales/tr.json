@@ -1,0 +1,56 @@
+{
+  "addNewBranchButton": "Yeni Şube Ekle",
+  "notFoundBranchText": "Mevcut şube bulunmamaktadır. Lütfen şube ekleyiniz.",
+  "deleteButton": "Sil",
+  "editButton": "Düzenle",
+  "branchName": "Şube Adı",
+  "currencyUnit": "Para Birimi",
+  "language": "Ana Dil",
+
+  "deleteMessage": "Silmek İstediğinize Emin Misiniz?",
+  "givUp": "Vazgeç",
+  "ok": "Tamam",
+  "save": "Kaydet",
+  "cancel": "İptal",
+
+  "addNewCategoryButton": "Yeni Kategori Ekle",
+  "choosePhoto": "Fotoğraf Seç",
+  "categoryName": "Kategori Adı",
+  "notFoundCategoryText": "Mevcut kategori bulunmamaktadır. Lütfen kategori ekleyiniz.",
+  "addCategory": "Kategori Ekle",
+  "editCategory": "Kategori Düzenle",
+
+  "addNewMenuItemButton": "Yeni Öge Ekle",
+  "menuItemName": "Öge Adı",
+  "explanation": "Öge Açıklaması",
+  "price": "Öge Fiyatı",
+  "ticket": "Etiket",
+  "editMenuItem": "Öge Düzenle",
+  "notFoundMenuItemText": "Mevcut öge bulunmamaktadır. Lütfen öge ekleyiniz.",
+
+  "notFoundLanguageText": "Mevcut dil bulunmamaktadır. Lütfen dil ekleyiniz.",
+  "addNewLanguageButton": "Yeni Dil Ekle",
+
+  "addNewTicketButton": "Yeni Etiket Ekle",
+  "ticketValue": "Etiket Değeri",
+  "ticketName": "Etiket Adı",
+  "editTicket": "Etiket Düzenle",
+  "notFoundTicketText": "Mevcut etiket bulunmamaktadır. Lütfen etiket ekleyiniz.",
+
+  "restaurantInfo": "Restoran Bilgileri",
+  "address": "Adres",
+  "country": "Ülke",
+  "city": "Şehir",
+  "district": "Semt",
+  "telephone": "Telefon",
+  "email": "Email",
+
+  "categories": "Kategoriler",
+  "restaurantInfos": "Restoran Bilgileri",
+  "tickets": "Etiketler",
+  "languages": "Diller",
+  "branches": "Şubelerim",
+
+  "chooseLanguage": "Dil Seçiniz",
+  "choose": "Seçiniz"
+}

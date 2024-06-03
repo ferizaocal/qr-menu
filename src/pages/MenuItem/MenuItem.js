@@ -15,9 +15,11 @@ import EditItem from "./EditItem";
 import DeleteItem from "./DeleteItem";
 import AddItem from "./AddItem";
 import Loading from "../../components/Loading";
+import { useTranslation } from "react-i18next";
 
 export default function MenuItem({ setPage, selectedCategory }) {
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
   const [editOpenDialog, setEditOpenDialog] = useState(false);
   const [deleteOpenDialog, setDeleteOpenDialog] = useState(false);
   const [addOpenDialog, setAddOpenDialog] = useState(false);
@@ -155,9 +157,7 @@ export default function MenuItem({ setPage, selectedCategory }) {
             display="flex"
             marginTop="1px"
           >
-            <Typography>
-              Mevcut öge bulunmamaktadır. Lütfen öge ekleyiniz.
-            </Typography>
+            <Typography>{t("notFoundMenuItemText")}</Typography>
           </Box>
         ) : (
           items.map((item, index) => {
@@ -181,10 +181,12 @@ export default function MenuItem({ setPage, selectedCategory }) {
 
                 <Box display="flex" alignItems="center" marginLeft="9px">
                   <Box flexGrow={1}>
-                    <Typography sx={{ marginTop: "11px" }}>Öge Adı:</Typography>
+                    <Typography sx={{ marginTop: "11px" }}>
+                      {t("menuItemName")}:
+                    </Typography>
                     <Typography variant="h6">{item.ItemName}</Typography>
                     <Typography sx={{ marginTop: "11px" }}>
-                      Öge Açıklaması:
+                      {t("explanation")}:
                     </Typography>
                     <Typography variant="h6">{item.ItemExplanation}</Typography>
                   </Box>
@@ -221,7 +223,7 @@ export default function MenuItem({ setPage, selectedCategory }) {
                       <Delete />
                     </IconButton>
                     <Typography>
-                      Öge Etiketi:{" "}
+                      {t("ticket")}:{" "}
                       {item?.tickets
                         ?.map?.((value) => value?.TicketName)
                         .join(",")}
@@ -230,7 +232,7 @@ export default function MenuItem({ setPage, selectedCategory }) {
 
                   <CardActions>
                     <Typography variant="subtitle1">
-                      Öge Fiyatı: {item.ItemPrice}
+                      {t("price")}: {item.ItemPrice}
                     </Typography>
                   </CardActions>
                 </Box>
@@ -248,7 +250,7 @@ export default function MenuItem({ setPage, selectedCategory }) {
             <ArrowBackIosNewIcon />
           </Button>
           <Button variant="contained" onClick={handleOpenAddDialog}>
-            Yeni Öge Ekle
+            {t("addNewMenuItemButton")}
           </Button>
         </Box>
         {editOpenDialog && (

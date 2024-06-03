@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import Loading from "../../components/Loading";
+import { useTranslation } from "react-i18next";
 
 export default function RestaurantInformation({ selectedBranch }) {
   const [name, setName] = React.useState(selectedBranch.BranchName || "");
@@ -18,7 +19,7 @@ export default function RestaurantInformation({ selectedBranch }) {
   const [district, setDistrict] = React.useState("");
   const [telephone, setTelephone] = React.useState("");
   const [email, setEmail] = React.useState("");
-
+  const { t } = useTranslation();
   const [loading, setLoading] = React.useState(true);
   const [selectedId, setSelectedId] = React.useState(null);
 
@@ -119,7 +120,7 @@ export default function RestaurantInformation({ selectedBranch }) {
               fontSize="20px"
               marginBottom="5px"
             >
-              {"Restoran Bilgileri"}
+              {t("restaurantInfo")}
             </Typography>
 
             <CardContent>
@@ -133,7 +134,7 @@ export default function RestaurantInformation({ selectedBranch }) {
                   value={name}
                   onChange={handleChangeName}
                   id="outlined-basic"
-                  label="Şube Adı"
+                  label={t("branchName")}
                   variant="outlined"
                   fullWidth
                   sx={{ marginBottom: "35px", height: "30px" }}
@@ -142,7 +143,7 @@ export default function RestaurantInformation({ selectedBranch }) {
                   value={address}
                   onChange={handleChangeAddress}
                   id="outlined-basic"
-                  label="Adres"
+                  label={t("address")}
                   variant="outlined"
                   fullWidth
                   sx={{ marginBottom: "35px", height: "30px" }}
@@ -151,7 +152,7 @@ export default function RestaurantInformation({ selectedBranch }) {
                   value={country}
                   onChange={handleChangeCountry}
                   id="outlined-basic"
-                  label="Ülke"
+                  label={t("country")}
                   variant="outlined"
                   fullWidth
                   sx={{ marginBottom: "35px", height: "30px" }}
@@ -160,7 +161,7 @@ export default function RestaurantInformation({ selectedBranch }) {
                   value={city}
                   onChange={handleChangeCity}
                   id="outlined-basic"
-                  label="Şehir"
+                  label={t("city")}
                   variant="outlined"
                   fullWidth
                   sx={{ marginBottom: "35px", height: "30px" }}
@@ -169,7 +170,7 @@ export default function RestaurantInformation({ selectedBranch }) {
                   value={district}
                   onChange={handleChangeDistrict}
                   id="outlined-basic"
-                  label="Semt"
+                  label={t("district")}
                   variant="outlined"
                   fullWidth
                   sx={{ marginBottom: "35px", height: "30px" }}
@@ -178,7 +179,7 @@ export default function RestaurantInformation({ selectedBranch }) {
                   value={telephone}
                   onChange={handleChangeTelephone}
                   id="outlined-basic"
-                  label="Telefon"
+                  label={t("telephone")}
                   variant="outlined"
                   fullWidth
                   sx={{ marginBottom: "35px", height: "30px" }}
@@ -187,7 +188,7 @@ export default function RestaurantInformation({ selectedBranch }) {
                   value={email}
                   onChange={handleChangeEmail}
                   id="outlined-basic"
-                  label="Email"
+                  label={t("email")}
                   variant="outlined"
                   fullWidth
                   sx={{ marginBottom: "35px", height: "30px" }}
@@ -213,7 +214,7 @@ export default function RestaurantInformation({ selectedBranch }) {
                 variant="contained"
                 autoFocus
               >
-                Kaydet
+                {t("save")}
               </Button>
             </CardActions>
           </Card>

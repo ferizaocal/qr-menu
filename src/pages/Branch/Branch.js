@@ -8,17 +8,20 @@ import AddBranch from "./AddBranch";
 import { pages } from "../App";
 import Loading from "../../components/Loading";
 import DeleteBranch from "./DeleteBranch";
+import { useTranslation } from "react-i18next";
 
 export default function Branch({
   setPage,
   setSelectedBranch,
   setSelectedLanguage,
 }) {
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const [deleteOpenDialog, setDeleteOpenDialog] = React.useState(false);
   const [branches, setBranches] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [selectedIndex, setSelectedIndex] = React.useState(null);
+
   const handleOpenAddDialog = () => {
     setOpen(true);
   };
@@ -126,7 +129,7 @@ export default function Branch({
                     });
                 }}
               >
-                Düzenle
+                {t("editButton")}
               </Button>
               <Button
                 sx={{ marginLeft: "5px" }}
@@ -138,7 +141,7 @@ export default function Branch({
                   handleOpenDeleteDialog();
                 }}
               >
-                Sil
+                {t("deleteButton")}
               </Button>
             </Grid>
           }
@@ -159,9 +162,7 @@ export default function Branch({
             display="flex"
             marginTop="1px"
           >
-            <Typography>
-              Mevcut şube bulunmamaktadır.Lütfen şube ekleyiniz.
-            </Typography>
+            <Typography>{t("notFoundBranchText")}</Typography>
           </Box>
         ) : (
           branches.map((value, index) => (
@@ -179,7 +180,7 @@ export default function Branch({
             sx={{ marginTop: 3 }}
             onClick={handleOpenAddDialog}
           >
-            Yeni Şube Ekle
+            {t("addNewBranchButton")}
           </Button>
         </Box>
         <AddBranch

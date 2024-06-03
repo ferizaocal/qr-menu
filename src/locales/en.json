@@ -1,0 +1,56 @@
+{
+  "addNewBranchButton": "Add New Branch",
+  "notFoundBranchText": "No branches found. Please add a branch.",
+  "deleteButton": "Delete",
+  "editButton": "Edit",
+  "branchName": "Branch Name",
+  "currencyUnit": "Currency Unit",
+  "language": "Primary Language",
+
+  "deleteMessage": "Are you sure you want to delete?",
+  "givUp": "Give Up",
+  "ok": "done",
+  "save": "Save",
+  "cancel": "Cancel",
+
+  "addNewCategoryButton": "Add New Category",
+  "choosePhoto": "Choose Photo",
+  "categoryName": "Category Name",
+  "notFoundCategoryText": "No categories found. Please add a category.",
+  "addCategory": "Add Category",
+  "editCategory": "Edit Category",
+
+  "addNewMenuItemButton": "Add New Item",
+  "menuItemName": "Item Name",
+  "explanation": "Item Description",
+  "price": "Item Price",
+  "ticket": "Tag",
+  "editMenuItem": "Edit Item",
+  "notFoundMenuItemText": "No items found. Please add an item.",
+
+  "notFoundLanguageText": "No languages found. Please add a language.",
+  "addNewLanguageButton": "Add New Language",
+
+  "addNewTicketButton": "Add New Tag",
+  "ticketValue": "Tag Value",
+  "ticketName": "Tag Name",
+  "editTicket": "Edit Tag",
+  "notFoundTicketText": "No tags found. Please add a tag.",
+
+  "restaurantInfo": "Restaurant Information",
+  "address": "Address",
+  "country": "Country",
+  "city": "City",
+  "district": "District",
+  "telephone": "Phone",
+  "email": "Email",
+
+  "categories": "Categories",
+  "restaurantInfos": "Restaurant Information",
+  "tickets": "Tags",
+  "languages": "Languages",
+  "branches": "Branches",
+
+  "chooseLanguage": "Choose Language",
+  "choose": "Choose"
+}

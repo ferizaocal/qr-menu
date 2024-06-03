@@ -9,6 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function EditCategory({
   open,
@@ -32,6 +33,7 @@ export default function EditCategory({
   const handleChangeName = (event) => {
     setName(event.target.value);
   };
+  const { t } = useTranslation();
 
   return (
     <React.Fragment>
@@ -47,7 +49,7 @@ export default function EditCategory({
           alignItems="center"
           display="flex"
         >
-          {"Kategori Düzenle"}
+          {t("editCategory")}
         </DialogTitle>
         <DialogContent>
           <Box
@@ -62,7 +64,7 @@ export default function EditCategory({
               sx={{ marginBottom: 2 }}
               onChange={handleChangeImage}
             >
-              Fotoğraf Seç
+              {t("choosePhoto")}
               <input type="file" hidden />
             </Button>
             {imageUrl && (
@@ -79,7 +81,7 @@ export default function EditCategory({
             <TextField
               sx={{ marginTop: 2 }}
               id="outlined-basic"
-              label="Kategori Adı"
+              label={t("categoryName")}
               variant="outlined"
               fullWidth
               onChange={handleChangeName}
@@ -88,14 +90,14 @@ export default function EditCategory({
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClickClose}>İptal</Button>
+          <Button onClick={handleClickClose}>{t("cancel")}</Button>
           <Button
             onClick={() => {
               editCategory(name, image);
             }}
             autoFocus
           >
-            Kaydet
+            {t("save")}
           </Button>
         </DialogActions>
       </Dialog>

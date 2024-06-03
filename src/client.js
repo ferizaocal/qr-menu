@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./pages/App";
-
+import "./locales/i18n";
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("qr-client-app");
   if (typeof container !== "undefined" && container !== null) {

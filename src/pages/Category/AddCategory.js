@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function AddCategory({ open, handleClickClose, saveCategory }) {
   const [name, setName] = React.useState("");
@@ -26,6 +27,7 @@ export default function AddCategory({ open, handleClickClose, saveCategory }) {
       saveCategory(name, image);
     }
   };
+  const { t } = useTranslation();
 
   return (
     <React.Fragment>
@@ -41,7 +43,7 @@ export default function AddCategory({ open, handleClickClose, saveCategory }) {
           alignItems="center"
           display="flex"
         >
-          {"Yeni Kategori Ekle"}
+          {t("addNewCategoryButton")}
         </DialogTitle>
         <DialogContent>
           <Box
@@ -56,7 +58,7 @@ export default function AddCategory({ open, handleClickClose, saveCategory }) {
               sx={{ marginBottom: 2 }}
               onChange={handleChangeImage}
             >
-              Fotoğraf Seç
+              {t("choosePhoto")}
               <input type="file" hidden />
             </Button>
             {imageUrl != null && (
@@ -71,7 +73,7 @@ export default function AddCategory({ open, handleClickClose, saveCategory }) {
               sx={{ marginTop: 2 }}
               value={name}
               id="outlined-basic"
-              label="Kategori Adı"
+              label={t("categoryName")}
               variant="outlined"
               fullWidth
               onChange={(e) => setName(e.target.value)}
@@ -79,9 +81,9 @@ export default function AddCategory({ open, handleClickClose, saveCategory }) {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClickClose}>İptal</Button>
+          <Button onClick={handleClickClose}>{t("cancel")}</Button>
           <Button onClick={handleAdd} autoFocus>
-            Kaydet
+            {t("save")}
           </Button>
         </DialogActions>
       </Dialog>

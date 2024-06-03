@@ -9,10 +9,12 @@ import {
 } from "@mui/material";
 import React from "react";
 import TextInput from "../../components/TextInput";
+import { useTranslation } from "react-i18next";
 
 export default function AddTicket({ open, handleClickClose, saveTicket }) {
   const [ticketValue, setTicketValue] = React.useState("");
   const [ticketName, setTicketName] = React.useState("");
+  const { t } = useTranslation();
   const handleAdd = () => {
     if (ticketValue && ticketName) {
       saveTicket(ticketValue, ticketName);
@@ -33,7 +35,7 @@ export default function AddTicket({ open, handleClickClose, saveTicket }) {
           alignItems="center"
           display="flex"
         >
-          {"Yeni Etiket Ekle"}
+          {t("addNewTicketButton")}
         </DialogTitle>
         <DialogContent>
           <Box
@@ -44,7 +46,7 @@ export default function AddTicket({ open, handleClickClose, saveTicket }) {
           >
             <TextInput
               id="outlined-basic"
-              label="Etiket Değeri"
+              label={t("ticketValue")}
               variant="outlined"
               fullWidth
               handleChange={(e) => setTicketValue(e.target.value)}
@@ -52,7 +54,7 @@ export default function AddTicket({ open, handleClickClose, saveTicket }) {
             />
             <TextInput
               id="outlined-basic"
-              label="Etiket Adı "
+              label={t("ticketName")}
               variant="outlined"
               fullWidth
               handleChange={(e) => setTicketName(e.target.value)}
@@ -60,9 +62,9 @@ export default function AddTicket({ open, handleClickClose, saveTicket }) {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClickClose}>İptal</Button>
+          <Button onClick={handleClickClose}>{t("cancel")}</Button>
           <Button onClick={handleAdd} autoFocus>
-            Kaydet
+            {t("save")}
           </Button>
         </DialogActions>
       </Dialog>

@@ -73,12 +73,12 @@ export default function Foods({ selectedMenu }) {
       </Paper>
       <Box
         sx={{
+          maxHeight: "500px",
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
           gap: "20px",
           overflowY: "auto",
-          maxHeight: "500px",
         }}
       >
         <Loading loading={loading}>

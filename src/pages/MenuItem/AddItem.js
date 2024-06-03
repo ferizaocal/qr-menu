@@ -10,6 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function AddItem({ open, handleClickClose, saveMenuItem }) {
   const [name, setName] = React.useState("");
@@ -17,7 +18,7 @@ export default function AddItem({ open, handleClickClose, saveMenuItem }) {
   const [price, setPrice] = React.useState("");
   const [image, setImage] = React.useState(null);
   const [imageUrl, setImageUrl] = React.useState(null);
-
+  const { t } = useTranslation();
   const [selectedTickets, setSelectedTickets] = React.useState([]);
   console.log(selectedTickets, "selectedtickets");
   const [tickets, setTickets] = React.useState();
@@ -72,7 +73,7 @@ export default function AddItem({ open, handleClickClose, saveMenuItem }) {
           alignItems="center"
           display="flex"
         >
-          {"Yeni Öge Ekle"}
+          {t("addNewMenuItemButton")}
         </DialogTitle>
         <DialogContent>
           <Box
@@ -87,7 +88,7 @@ export default function AddItem({ open, handleClickClose, saveMenuItem }) {
               sx={{ marginBottom: 2 }}
               onChange={handleChangeImage}
             >
-              Fotoğraf Seç
+              {t("choosePhoto")}
               <input type="file" hidden />
             </Button>
             {imageUrl != null && (
@@ -102,7 +103,7 @@ export default function AddItem({ open, handleClickClose, saveMenuItem }) {
               value={name}
               onChange={handleChangeName}
               id="outlined-basic"
-              label="Öge Adı"
+              label={t("menuItemName")}
               variant="outlined"
               fullWidth
               sx={{ marginBottom: 2, marginTop: 2 }}
@@ -111,7 +112,7 @@ export default function AddItem({ open, handleClickClose, saveMenuItem }) {
               value={explanation}
               onChange={handleChangeExplanation}
               id="outlined-basic"
-              label="Öge Açıklaması"
+              label={t("explanation")}
               variant="outlined"
               fullWidth
               sx={{ marginBottom: 2 }}
@@ -120,7 +121,7 @@ export default function AddItem({ open, handleClickClose, saveMenuItem }) {
               value={price}
               onChange={handleChangePrice}
               id="outlined-basic"
-              label="Öge Fiyatı"
+              label={t("price")}
               variant="outlined"
               fullWidth
               sx={{ marginBottom: 2 }}
@@ -139,7 +140,7 @@ export default function AddItem({ open, handleClickClose, saveMenuItem }) {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Etiket"
+                  label={t("ticket")}
                   placeholder="Etiket"
                   variant="outlined"
                 />
@@ -148,9 +149,9 @@ export default function AddItem({ open, handleClickClose, saveMenuItem }) {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClickClose}>İptal</Button>
+          <Button onClick={handleClickClose}>{t("cancel")}</Button>
           <Button onClick={handleAdd} autoFocus>
-            Kaydet
+            {t("save")}
           </Button>
         </DialogActions>
       </Dialog>

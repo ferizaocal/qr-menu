@@ -8,10 +8,12 @@ import {
 } from "@mui/material";
 import React from "react";
 import TextInput from "../../components/TextInput";
+import { useTranslation } from "react-i18next";
 
 export default function EditTicket({ open, handleClickClose, updateTicket }) {
   const [ticketValue, setTicketValue] = React.useState("");
   const [ticketName, setTicketName] = React.useState("");
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <Dialog
@@ -26,7 +28,7 @@ export default function EditTicket({ open, handleClickClose, updateTicket }) {
           alignItems="center"
           display="flex"
         >
-          {"Etiketi Düzenle"}
+          {t("editTicket")}
         </DialogTitle>
         <DialogContent>
           <Box
@@ -37,7 +39,7 @@ export default function EditTicket({ open, handleClickClose, updateTicket }) {
           >
             <TextInput
               id="outlined-basic"
-              label="Etiket Değeri"
+              label={t("ticketValue")}
               variant="outlined"
               fullWidth
               value={ticketValue}
@@ -46,7 +48,7 @@ export default function EditTicket({ open, handleClickClose, updateTicket }) {
             />
             <TextInput
               id="outlined-basic"
-              label="Etiket Adı "
+              label={t("ticketName")}
               variant="outlined"
               fullWidth
               value={ticketName}
@@ -55,7 +57,7 @@ export default function EditTicket({ open, handleClickClose, updateTicket }) {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClickClose}>İptal</Button>
+          <Button onClick={handleClickClose}>{t("cancel")}</Button>
           <Button
             onClick={() => {
               updateTicket(ticketValue, ticketName);
@@ -63,7 +65,7 @@ export default function EditTicket({ open, handleClickClose, updateTicket }) {
             }}
             autoFocus
           >
-            Kaydet
+            {t("ok")}
           </Button>
         </DialogActions>
       </Dialog>

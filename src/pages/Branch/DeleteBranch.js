@@ -1,7 +1,9 @@
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function DeleteBranch({ open, handleClickClose, handleDelete }) {
+  const { t } = useTranslation();
   return (
     <React.Fragment>
       <Dialog
@@ -16,7 +18,7 @@ export default function DeleteBranch({ open, handleClickClose, handleDelete }) {
           alignItems="center"
           display="flex"
         >
-          {"Silmek İstediğinize Emin Misiniz?"}
+          {t("deleteMessage")}
         </DialogTitle>
 
         <DialogActions>
@@ -28,7 +30,7 @@ export default function DeleteBranch({ open, handleClickClose, handleDelete }) {
             }}
             autoFocus
           >
-            Tamam
+            {t("ok")}
           </Button>
         </DialogActions>
       </Dialog>
